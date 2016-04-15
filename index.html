@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Spdx-license-checker by tbouron</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Spdx-license-checker</h1>
+      <h2 class="project-tagline">A small Java library that provides an easy way to check whether or not an ID / name is a valid SPDX license</h2>
+      <a href="https://github.com/tbouron/spdx-license-checker" class="btn">View on GitHub</a>
+      <a href="https://github.com/tbouron/spdx-license-checker/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/tbouron/spdx-license-checker/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="spdx-license-checker" class="anchor" href="#spdx-license-checker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SPDX License Checker</h1>
+
+<p>A small Java library that provides an easy way to check whether or not an ID / name is a valid SPDX license.</p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The Software Package Data Exchange (SPDX) specification is a standard format for communicating the components, licenses and copyrights associated with a software package.
+It comes with <a href="http://spdx.org/licenses/">an exhaustive list of licenses</a> that have standarised names and unique identifier. </p>
+
+<p>I was looking for a quick way to check whether or not a particular ID or name was a valid SPDX license but couldn't find any library to do it, therefore I created my own :)</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+
+<p>Download <a href="https://search.maven.org/remote_content?g=com.github.tbouron&amp;a=spdx-license-checker&amp;v=LATEST">the latest JAR</a> or grab via Maven:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
+  &lt;<span class="pl-ent">groupId</span>&gt;com.github.tbouron&lt;/<span class="pl-ent">groupId</span>&gt;
+  &lt;<span class="pl-ent">artifactId</span>&gt;spdx-license-checker&lt;/<span class="pl-ent">artifactId</span>&gt;
+  &lt;<span class="pl-ent">version</span>&gt;1.0.0&lt;/<span class="pl-ent">version</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<p>or Gradle:</p>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.tbouron:spdx-license-checker:1.0.0<span class="pl-pds">'</span></span></pre></div>
+
+<p>Snapshots of the development version are available in <a href="https://oss.sonatype.org/content/repositories/snapshots/">Sonatype's <code>snapshots</code> repository</a>.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2016 Thomas Bouron.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>The library packages an <code>enum</code> that contains all functions needed. For instance:</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Check if a given ID is a valid SPDX license ID</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>isValidId(<span class="pl-s"><span class="pl-pds">"</span>Apache-2.0<span class="pl-pds">"</span></span>); <span class="pl-c">// return true</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>isValidId(<span class="pl-s"><span class="pl-pds">"</span>Test<span class="pl-pds">"</span></span>); <span class="pl-c">// return false</span>
+
+<span class="pl-c">// Check if a given name is a valid SPDX license name</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>isValidName(<span class="pl-s"><span class="pl-pds">"</span>Apache License 2.0<span class="pl-pds">"</span></span>); <span class="pl-c">// return true</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>isValidName(<span class="pl-s"><span class="pl-pds">"</span>My private license<span class="pl-pds">"</span></span>); <span class="pl-c">// return false</span></pre></div>
+
+<p>You can get an <code>SpdxLicense</code> instance by passing an ID / name</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Get SPDX license instance from a given ID</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>fromId(<span class="pl-s"><span class="pl-pds">"</span>Apache-2.0<span class="pl-pds">"</span></span>); <span class="pl-c">// return SpdxLicense.APACHE_2_0</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>fromId(<span class="pl-s"><span class="pl-pds">"</span>Test<span class="pl-pds">"</span></span>); <span class="pl-c">// return null</span>
+
+<span class="pl-c">// Get SPDX license instance from a given name</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>fromName(<span class="pl-s"><span class="pl-pds">"</span>Apache License 2.0<span class="pl-pds">"</span></span>); <span class="pl-c">// return SpdxLicense.APACHE_2_0</span>
+<span class="pl-smi">SpdxLicense</span><span class="pl-k">.</span>fromName(<span class="pl-s"><span class="pl-pds">"</span>My private license<span class="pl-pds">"</span></span>); <span class="pl-c">// return null</span></pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/tbouron/spdx-license-checker">Spdx-license-checker</a> is maintained by <a href="https://github.com/tbouron">tbouron</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
