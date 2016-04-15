@@ -19,7 +19,7 @@
 
     <groupId>com.github.tbouron</groupId>
     <artifactId>spdx-license-checker</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>SPDX License Checker</name>
     <description>A small Java library that provides an easy way to check whether or not an ID / name is a valid SPDX license</description>
@@ -38,7 +38,7 @@
         <url>https://github.com/tbouron/spdx-license-checker</url>
         <connection>scm:git:git://github.com/tbouron/spdx-license-checker.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tbouron/spdx-license-checker.git</developerConnection>
-        <tag>1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
